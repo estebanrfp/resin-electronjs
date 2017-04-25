@@ -57,7 +57,6 @@ WORKDIR /usr/src/app
 
 # Move package.json to filesystem
 COPY ./app/package.json ./
-COPY ./app/process.yml ./
 
 # Install npm modules for the application
 RUN JOBS=MAX npm install --unsafe-perm --production \
@@ -73,4 +72,4 @@ RUN npm i -g pm2
 
 # Start app
 # CMD ["bash", "/usr/src/app/start.sh"]
-CMD ["pm2-dev", "process.yml"]
+CMD ["pm2-dev", "/usr/src/app/process.yml"]
