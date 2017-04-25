@@ -1,5 +1,5 @@
 apps:
-  - script   : '/usr/src/app/start.sh'
+  - script   : './start.sh'
     name     : 'start'
     exec_mode: 'cluster'
     kill_timeout : 100
