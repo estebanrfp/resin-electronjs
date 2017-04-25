@@ -1,5 +1,20 @@
 FROM hypriot/rpi-node:6.9
 
+# Set environment variables
+# ENV appDir /var/www/app/current
+# URL_LAUNCHER_URL
+# URL_LAUNCHER_NODE
+# URL_LAUNCHER_KIOSK
+# URL_LAUNCHER_TITLE
+# URL_LAUNCHER_FRAME
+# URL_LAUNCHER_CONSOLE
+# URL_LAUNCHER_WIDTH
+# URL_LAUNCHER_HEIGHT
+# URL_LAUNCHER_TOUCH
+# URL_LAUNCHER_TOUCH_SIMULATE
+# URL_LAUNCHER_ZOOM
+# URL_LAUNCHER_OVERLAY_SCROLLBARS
+
 # debian httpredir mirror proxy often ends up with 404s - editing source file to avoid it
 RUN sed -i "s!httpredir.debian.org!`curl -s -D - http://httpredir.debian.org/demo/debian/ | awk '/^Link:/ { print $2 }' | sed -e 's@<http://\(.*\)/debian/>;@\1@g'`!" /etc/apt/sources.list
 
@@ -54,4 +69,5 @@ COPY ./app ./
 ENV INITSYSTEM on
 
 # Start app
+CMD ls -al
 CMD ["bash", "/usr/src/app/start.sh"]
