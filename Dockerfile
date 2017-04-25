@@ -53,7 +53,7 @@ RUN echo "#!/bin/bash" > /etc/X11/xinit/xserverrc \
   && echo 'exec /usr/bin/X -s 0 dpms -nocursor -nolisten tcp "$@"' >> /etc/X11/xinit/xserverrc
 
 # Move to app dir
-WORKDIR /data
+WORKDIR /usr/src/app
 
 # Move package.json to filesystem
 COPY ./app/package.json ./
@@ -66,8 +66,7 @@ RUN JOBS=MAX npm install --unsafe-perm --production \
 COPY ./app ./
 
 ## uncomment if you want systemd
-#ENV INITSYSTEM on
+ENV INITSYSTEM on
 
 # Start app
-CMD ls -al
-CMD ["bash", "/data/start.sh"]
+CMD ["bash", "/usr/src/app/start.sh"]
