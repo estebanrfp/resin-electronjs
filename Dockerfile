@@ -69,5 +69,5 @@ COPY ./app ./
 ENV INITSYSTEM on
 
 # Start app
-CMD ls -al
+RUN ls -al
 CMD ["bash", "/usr/src/app/start.sh"]
