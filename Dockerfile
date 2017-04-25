@@ -66,7 +66,7 @@ RUN JOBS=MAX npm install --unsafe-perm --production \
 COPY ./app ./
 
 ## uncomment if you want systemd
-ENV INITSYSTEM on
+#ENV INITSYSTEM on
 
 # Start app
 CMD ["bash", "/usr/src/app/start.sh"]
