@@ -1,5 +1,5 @@
 apps:
-  - script   : './start.sh'
+  - script   : 'start.sh'
     name     : 'start'
     exec_interpreter: 'bash'
     exec_mode: 'cluster'
