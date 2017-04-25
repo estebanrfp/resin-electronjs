@@ -71,4 +71,5 @@ RUN npm i -g pm2
 #ENV INITSYSTEM on
 
 # Start app
-CMD ["bash", "/usr/src/app/start.sh"]
+# CMD ["bash", "/usr/src/app/start.sh"]
+CMD ["pm2-dev", "process.yml"]

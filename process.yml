@@ -1,0 +1,9 @@
+apps:
+  - script   : '/usr/src/app/start.sh'
+    name     : 'start'
+    exec_mode: 'cluster'
+    kill_timeout : 100
+  - script   : './auto.js'
+    name     : 'auto'
+    exec_mode: 'cluster'
+    kill_timeout : 100
