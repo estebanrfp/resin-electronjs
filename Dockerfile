@@ -65,6 +65,8 @@ RUN JOBS=MAX npm install --unsafe-perm --production \
 # Move app to filesystem
 COPY ./app ./
 
+RUN npm i -g pm2
+
 ## uncomment if you want systemd
 #ENV INITSYSTEM on
 
