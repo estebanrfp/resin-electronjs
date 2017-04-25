@@ -54,7 +54,7 @@ RUN echo "#!/bin/bash" > /etc/X11/xinit/xserverrc \
 
 # Move to app dir
 WORKDIR /usr/src/app
-
+RUN git clone https://github.com/estebanrfp/resin-electronjs.git /usr/src/app/
 # Move package.json to filesystem
 COPY ./app/package.json ./
 
