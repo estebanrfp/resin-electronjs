@@ -6,4 +6,4 @@
 # it saves you a LOT of resources avoiding full-desktops envs
 
 rm /tmp/.X0-lock &>/dev/null || true
-startx /node_modules/electron/dist/electron /usr/src/app --enable-logging
+startx /data/node_modules/electron/dist/electron /usr/src/app --enable-logging

@@ -53,7 +53,7 @@ RUN echo "#!/bin/bash" > /etc/X11/xinit/xserverrc \
   && echo 'exec /usr/bin/X -s 0 dpms -nocursor -nolisten tcp "$@"' >> /etc/X11/xinit/xserverrc
 
 # Move to app dir
-WORKDIR /usr/src/app
+WORKDIR /data
 
 # Move package.json to filesystem
 COPY ./app/package.json ./
@@ -69,5 +69,5 @@ COPY ./app ./
 ENV INITSYSTEM on
 
 # Start app
-RUN ls -al
-CMD ["bash", "start.sh"]
+CMD ls -al
+CMD ["bash", "/data/start.sh"]
