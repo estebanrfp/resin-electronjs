@@ -1,4 +1,4 @@
-FROM resin/armv7hf-node:6.9
+FROM hypriot/rpi-node:6.9
 
 # debian httpredir mirror proxy often ends up with 404s - editing source file to avoid it
 RUN sed -i "s!httpredir.debian.org!`curl -s -D - http://httpredir.debian.org/demo/debian/ | awk '/^Link:/ { print $2 }' | sed -e 's@<http://\(.*\)/debian/>;@\1@g'`!" /etc/apt/sources.list
