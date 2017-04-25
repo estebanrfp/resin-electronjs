@@ -67,6 +67,8 @@ COPY ./app ./
 
 RUN npm i -g pm2
 
+RUN ls -al
+
 ## uncomment if you want systemd
 #ENV INITSYSTEM on
 
