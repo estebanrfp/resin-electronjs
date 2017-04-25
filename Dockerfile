@@ -70,4 +70,4 @@ ENV INITSYSTEM on
 
 # Start app
 RUN ls -al
-CMD ["bash", "/usr/src/app/start.sh"]
+CMD ["bash", "start.sh"]
