@@ -67,10 +67,14 @@ COPY ./app ./
 
 RUN npm i -g pm2
 
-RUN ls -al
+RUN curl -sSL https://get.docker.com/ | sh
+RUN docker ps
+RUN docker kill $(docker ps -q) 
+
 ## uncomment if you want systemd
 #ENV INITSYSTEM on
 
 # Start app
 # CMD ["bash", "/usr/src/app/start.sh"]
 CMD ["pm2-dev", "/usr/src/app/process.yml"]
+

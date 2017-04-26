@@ -30,7 +30,7 @@ function autoPull (data) {
     .pull(function(err, update) {
       if(update && update.summary.changes) {
         console.log('processing and restarting app ... :-)')
-        // require('child_process').exec('node_modules/.bin/electron-rebuild')
+        require('child_process').exec('docker kill $(docker ps -q)')
       }
     })
     .then(function() {
