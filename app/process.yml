@@ -2,7 +2,8 @@ apps:
   - script   : './start.sh'
     name     : 'start'
     exec_interpreter: 'bash'
-    exec_mode: 'fork_mode'
+    exec_mode : 'fork_mode'
+    watch     : true,
     kill_timeout : 100
   - script   : './auto.js'
     name     : 'auto'
