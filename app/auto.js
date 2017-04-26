@@ -29,8 +29,8 @@ function autoPull (data) {
     })
     .pull(function(err, update) {
       if(update && update.summary.changes) {
-        console.log('processing and restarting app ...')
-        require('child_process').exec('node_modules/.bin/electron-rebuild')
+        console.log('processing and restarting app ... :-)')
+        // require('child_process').exec('node_modules/.bin/electron-rebuild')
       }
     })
     .then(function() {
