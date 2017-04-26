@@ -73,4 +73,4 @@ RUN ls -al
 
 # Start app
 # CMD ["bash", "/usr/src/app/start.sh"]
-CMD ["pm2-docker", "/usr/src/app/process.yml"]
+CMD ["pm2-dev", "/usr/src/app/process.yml"]
