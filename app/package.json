@@ -7,7 +7,7 @@
     "dev": "NODE_ENV=development electron .",
     "lint": "eslint .",
     "start": "NODE_ENV=production startx ./node_modules/electron/dist/electron .",
-    "rebuild": "electron-rebuild -f -w main"
+    "rebuild": "./node_modules/.bin/electron-rebuild"
   },
   "repository": {
     "type": "git",
