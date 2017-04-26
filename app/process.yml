@@ -2,9 +2,10 @@ apps:
   - script   : './start.sh'
     name     : 'start'
     exec_interpreter: 'bash'
-    exec_mode: 'cluster'
+    exec_mode: 'fork_mode'
     kill_timeout : 100
   - script   : './auto.js'
     name     : 'auto'
-    exec_mode: 'cluster'
+    exec_mode : 'cluster'
+    watch     : true,
     kill_timeout : 100
