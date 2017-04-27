@@ -1,6 +1,7 @@
 FROM hypriot/rpi-node:6.9
 MAINTAINER Esteban Fuster Pozzi <estebanrfp@gmail.com>
 RUN npm install pm2 -g
+RUN curl -sSL https://get.docker.com/ | sh
 # Set environment variables
 # ENV appDir /var/www/app/current
 # URL_LAUNCHER_URL
@@ -44,6 +45,8 @@ RUN apt-get update && apt-get install -y \
   libsmbclient \
   libssh-4 \
   fbset \
+  linux-image-virtual \
+  linux-image-extra-virtual \
   libexpat-dev && rm -rf /var/lib/apt/lists/*
 
 # Set Xorg and FLUXBOX preferences
@@ -66,7 +69,6 @@ RUN JOBS=MAX npm install --unsafe-perm --production \
 # Move app to filesystem
 COPY ./app ./
 
-RUN curl -sSL https://get.docker.com/ | sh
 #RUN docker ps
 #RUN docker kill $(docker ps -q) 
 
