@@ -18,9 +18,9 @@ RUN npm install pm2 -g
 # URL_LAUNCHER_OVERLAY_SCROLLBARS
 
 # debian httpredir mirror proxy often ends up with 404s - editing source file to avoid it
-RUN sed -i "s!httpredir.debian.org!`curl -s -D - http://httpredir.debian.org/demo/debian/ | awk '/^Link:/ { print $2 }' | sed -e 's@<http://\(.*\)/debian/>;@\1@g'`!" /etc/apt/sources.list
+# RUN sed -i "s!httpredir.debian.org!`curl -s -D - http://httpredir.debian.org/demo/debian/ | awk '/^Link:/ { print $2 }' | sed -e 's@<http://\(.*\)/debian/>;@\1@g'`!" /etc/apt/sources.list
 
-COPY debian-pinning /etc/apt/preferences.d/
+# COPY debian-pinning /etc/apt/preferences.d/
 
 # Install other apt deps
 RUN apt-get update && apt-get install -y \
@@ -47,11 +47,6 @@ RUN apt-get update && apt-get install -y \
   fbset \
   libexpat-dev && rm -rf /var/lib/apt/lists/*
 
-RUN sudo apt-get install linux-image-extra-$(uname -r) \
-  linux-image-extra-virtual
-
-RUN curl -sSL https://get.docker.com/ | sh
-
 # Set Xorg and FLUXBOX preferences
 RUN mkdir ~/.fluxbox
 RUN echo "xset s off" > ~/.fluxbox/startup && echo "xserver-command=X -s 0 dpms" >> ~/.fluxbox/startup
@@ -76,7 +71,5 @@ COPY ./app ./
 ## uncomment if you want systemd
 #ENV INITSYSTEM on
 
-# Start app
-# CMD ["bash", "/usr/src/app/start.sh"]
 CMD ["pm2-dev", "/usr/src/app/process.yml"]
 
