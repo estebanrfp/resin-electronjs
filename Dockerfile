@@ -1,5 +1,5 @@
 FROM hypriot/rpi-node:6.9
-
+RUN npm install pm2 -g
 # Set environment variables
 # ENV appDir /var/www/app/current
 # URL_LAUNCHER_URL
@@ -65,8 +65,6 @@ RUN JOBS=MAX npm install --unsafe-perm --production \
 # Move app to filesystem
 COPY ./app ./
 
-#RUN npm i -g pm2
-
 #RUN curl -sSL https://get.docker.com/ | sh
 #RUN docker ps
 #RUN docker kill $(docker ps -q) 
@@ -76,5 +74,5 @@ COPY ./app ./
 
 # Start app
 # CMD ["bash", "/usr/src/app/start.sh"]
-# CMD ["pm2-dev", "/usr/src/app/process.yml"]
+CMD ["pm2-dev", "/usr/src/app/process.yml"]
 
