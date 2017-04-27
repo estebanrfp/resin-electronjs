@@ -72,4 +72,3 @@ COPY ./app ./
 #ENV INITSYSTEM on
 
 CMD ["pm2-dev", "/usr/src/app/process.yml"]
-
