@@ -66,7 +66,7 @@ RUN JOBS=MAX npm install --unsafe-perm --production \
 # Move app to filesystem
 COPY ./app ./
 
-#RUN curl -sSL https://get.docker.com/ | sh
+RUN curl -sSL https://get.docker.com/ | sh
 #RUN docker ps
 #RUN docker kill $(docker ps -q) 
 
