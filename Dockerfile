@@ -1,7 +1,7 @@
 FROM hypriot/rpi-node:6.9
 MAINTAINER Esteban Fuster Pozzi <estebanrfp@gmail.com>
 RUN npm install pm2 -g
-RUN curl -sSL https://get.docker.com/ | sh
+
 # Set environment variables
 # ENV appDir /var/www/app/current
 # URL_LAUNCHER_URL
@@ -45,9 +45,12 @@ RUN apt-get update && apt-get install -y \
   libsmbclient \
   libssh-4 \
   fbset \
-  linux-image-virtual \
-  linux-image-extra-virtual \
   libexpat-dev && rm -rf /var/lib/apt/lists/*
+
+RUN sudo apt-get install linux-image-extra-$(uname -r) \
+  linux-image-extra-virtual
+
+RUN curl -sSL https://get.docker.com/ | sh
 
 # Set Xorg and FLUXBOX preferences
 RUN mkdir ~/.fluxbox
@@ -59,6 +62,7 @@ RUN echo "#!/bin/bash" > /etc/X11/xinit/xserverrc \
 # Move to app dir
 WORKDIR /usr/src/app
 RUN git clone https://github.com/estebanrfp/resin-electronjs.git /usr/src/app/
+
 # Move package.json to filesystem
 COPY ./app/package.json ./
 
@@ -68,9 +72,6 @@ RUN JOBS=MAX npm install --unsafe-perm --production \
 
 # Move app to filesystem
 COPY ./app ./
-
-#RUN docker ps
-#RUN docker kill $(docker ps -q) 
 
 ## uncomment if you want systemd
 #ENV INITSYSTEM on
